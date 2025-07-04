@@ -12,11 +12,11 @@
                                 <i class="bi bi-tools"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for purchased spares count</span>
+                                <h6>124</h6>
+                                <span class="text-muted small">Total spares purchased in Q2</span>
                             </div>
                         </div>
-                        <div id="sparesChart" style="height:100px;"></div>
+                        <div id="sparesChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -31,11 +31,11 @@
                                 <i class="bi bi-cash-stack"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for payroll summary</span>
+                                <h6>UGX 55M</h6>
+                                <span class="text-muted small">Total payroll for last month</span>
                             </div>
                         </div>
-                        <div id="payrollChart" style="height:100px;"></div>
+                        <div id="payrollChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -50,11 +50,11 @@
                                 <i class="bi bi-fuel-pump"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for fuel usage</span>
+                                <h6>700L</h6>
+                                <span class="text-muted small">Fuel consumed across all sites</span>
                             </div>
                         </div>
-                        <div id="fuelChart" style="height:100px;"></div>
+                        <div id="fuelChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -69,11 +69,11 @@
                                 <i class="bi bi-truck-front"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for excavator stats</span>
+                                <h6>23</h6>
+                                <span class="text-muted small">Total excavator operations</span>
                             </div>
                         </div>
-                        <div id="excavatorChart" style="height:100px;"></div>
+                        <div id="excavatorChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -88,11 +88,11 @@
                                 <i class="bi bi-truck"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for vehicle stats</span>
+                                <h6>21</h6>
+                                <span class="text-muted small">Total vehicles in operation</span>
                             </div>
                         </div>
-                        <div id="vehicleChart" style="height:100px;"></div>
+                        <div id="vehicleChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -107,11 +107,11 @@
                                 <i class="bi bi-passport"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for visa records</span>
+                                <h6>16</h6>
+                                <span class="text-muted small">Active expatriate visas</span>
                             </div>
                         </div>
-                        <div id="visaChart" style="height:100px;"></div>
+                        <div id="visaChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -126,11 +126,11 @@
                                 <i class="bi bi-currency-exchange"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for travel expenses</span>
+                                <h6>UGX 8.1M</h6>
+                                <span class="text-muted small">Spent on travel this quarter</span>
                             </div>
                         </div>
-                        <div id="travelChart" style="height:100px;"></div>
+                        <div id="travelChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -145,11 +145,11 @@
                                 <i class="bi bi-bank"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for government tax summary</span>
+                                <h6>UGX 10.2M</h6>
+                                <span class="text-muted small">Paid in government taxes</span>
                             </div>
                         </div>
-                        <div id="govTaxChart" style="height:120px;"></div>
+                        <div id="govTaxChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
@@ -164,70 +164,87 @@
                                 <i class="bi bi-cash-coin"></i>
                             </div>
                             <div class="ps-3">
-                                <h6>--</h6>
-                                <span class="text-muted small">Placeholder for provincial tax summary</span>
+                                <h6>UGX 3.5M</h6>
+                                <span class="text-muted small">Total provincial tax paid</span>
                             </div>
                         </div>
-                        <div id="provTaxChart" style="height:120px;"></div>
+                        <div id="provTaxChart" style="height:250px;"></div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- Placeholder Graphs -->
+        <!-- Scripts -->
         @push('scripts')
             <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
             <script>
-                function placeholderBarChart(id) {
+                function barChart(id, categories, data, color = '#0d6efd') {
                     var chart = echarts.init(document.getElementById(id));
                     chart.setOption({
-                        xAxis: { type: 'category', data: ['A', 'B', 'C', 'D'] },
+                        tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: categories },
                         yAxis: { type: 'value' },
                         series: [{
-                            data: [12, 20, 15, 8],
+                            data: data,
                             type: 'bar',
-                            itemStyle: { color: '#0d6efd' }
+                            itemStyle: { color: color }
                         }]
                     });
                 }
-                function placeholderPieChart(id) {
+
+                function pieChart(id, data) {
                     var chart = echarts.init(document.getElementById(id));
                     chart.setOption({
+                        tooltip: { trigger: 'item' },
                         series: [{
                             type: 'pie',
                             radius: '60%',
-                            data: [
-                                { value: 40, name: 'A' },
-                                { value: 30, name: 'B' },
-                                { value: 20, name: 'C' },
-                                { value: 10, name: 'D' }
-                            ]
+                            data: data,
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
                         }]
                     });
                 }
-                function placeholderLineChart(id) {
+
+                function lineChart(id, months, data, color = '#198754') {
                     var chart = echarts.init(document.getElementById(id));
                     chart.setOption({
-                        xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr'] },
+                        tooltip: { trigger: 'axis' },
+                        xAxis: { type: 'category', data: months },
                         yAxis: { type: 'value' },
                         series: [{
-                            data: [5, 15, 9, 12],
+                            data: data,
                             type: 'line',
                             smooth: true,
-                            itemStyle: { color: '#198754' }
+                            itemStyle: { color: color }
                         }]
                     });
                 }
+
                 document.addEventListener('DOMContentLoaded', function () {
-                    placeholderBarChart('sparesChart');
-                    placeholderPieChart('payrollChart');
-                    placeholderBarChart('fuelChart');
-                    placeholderLineChart('excavatorChart');
-                    placeholderBarChart('vehicleChart');
-                    placeholderPieChart('visaChart');
-                    placeholderBarChart('travelChart');
-                    placeholderBarChart('govTaxChart');
-                    placeholderBarChart('provTaxChart');
+                    barChart('sparesChart', ['Jan', 'Feb', 'Mar', 'Apr'], [30, 25, 40, 29]);
+                    pieChart('payrollChart', [
+                        { value: 40000, name: 'Salaries' },
+                        { value: 10000, name: 'Allowances' },
+                        { value: 5000, name: 'Overtime' }
+                    ]);
+                    barChart('fuelChart', ['Site A', 'Site B', 'Site C'], [300, 220, 180], '#ffc107');
+                    lineChart('excavatorChart', ['Q1', 'Q2', 'Q3', 'Q4'], [12, 19, 15, 23], '#dc3545');
+                    barChart('vehicleChart', ['Trucks', 'Pick-ups', 'Locomotives'], [10, 7, 4], '#6f42c1');
+                    pieChart('visaChart', [
+                        { value: 12, name: 'Valid' },
+                        { value: 3, name: 'Expiring Soon' },
+                        { value: 1, name: 'Expired' }
+                    ]);
+                    barChart('travelChart', ['Jan', 'Feb', 'Mar', 'Apr'], [2000, 1800, 2500, 2100], '#fd7e14');
+                    barChart('govTaxChart', ['VAT', 'Income', 'Customs'], [5000, 3200, 1800], '#20c997');
+                    barChart('provTaxChart', ['Western', 'Central', 'Eastern'], [1200, 1400, 900], '#6610f2');
                 });
             </script>
         @endpush
